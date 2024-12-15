@@ -1,0 +1,59 @@
+.about-container {
+  padding: 40px;
+  background-color: #f9fafb;
+  text-align: center;
+  max-width: 1000px;
+  margin: auto;
+}
+
+h2 {
+  font-size: 2.5rem;
+  color: #0056b3;
+}
+
+.about-description {
+  font-size: 1.2rem;
+  color: #555;
+  line-height: 1.6;
+  margin-top: 20px;
+}
+
+.image-container {
+  margin-top: 30px;
+}
+
+.iot-image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.team-container {
+  margin-top: 50px;
+}
+
+.team-images {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.team-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin: 0 15px;
+  object-fit: cover;
+}
+
+h3 {
+  font-size: 2rem;
+  color: #333;
+  margin-top: 20px;
+}
+
+p {
+  font-size: 1rem;
+  color: #333;
+  margin-top: 10px;
+}
