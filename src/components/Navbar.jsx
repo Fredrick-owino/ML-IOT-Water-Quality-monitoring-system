@@ -1,16 +1,39 @@
-import React from "react";
+import React from 'react';
 
 const Navbar = () => {
   return (
-    <nav className="bg-primary text-white shadow-lg">
-      <div className="container mx-auto flex justify-between items-center py-4 px-6">
-      <a href="/" className="text-2xl font-bold">logo</a>
-        <ul className="flex space-x-6">
-          <li><a href="/" className="hover:text-secondary">Home</a></li>
-          <li><a href="/about" className="hover:text-secondary">About</a></li>
-          <li><a href="/services" className="hover:text-secondary">Services</a></li>
-          <li><a href="/visualization" className="hover:text-secondary">Visualization</a></li>
-          <li><a href="/contact" className="hover:text-secondary">Contact</a></li>
+    <nav className="bg-blue-600">
+      <div className="container mx-auto px-4">
+        <ul className="flex justify-center space-x-6 py-3 text-white">
+          <li className="hover:underline">
+            <a href="/">Home</a>
+          </li>
+          <li className="hover:underline">
+            <a href="/about">About Us</a>
+          </li>
+          <li className="hover:underline">
+            <a href="/services">Services</a>
+          </li>
+          <li className="hover:underline">
+            <a href="/visualization">Visualization</a>
+          </li>
+          <li className="hover:underline">
+            <a href="/alerts">Alerts & Notifications </a>
+          </li>
+          <li className="hover:underline">
+            <a href="/contact">Contact</a>
+          </li>
+          <li className="group relative">
+            <span className="cursor-pointer">More</span>
+            <ul className="absolute left-0 top-full mt-1 hidden group-hover:block bg-white text-black shadow-lg rounded-md">
+              <li className="px-4 py-2 hover:bg-gray-200">
+                <a href="/settings">Settings</a>
+              </li>
+              <li className="px-4 py-2 hover:bg-gray-200">
+                <a href="/faq">FAQs</a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </div>
     </nav>

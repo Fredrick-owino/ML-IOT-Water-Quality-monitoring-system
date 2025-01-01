@@ -18,33 +18,32 @@ const HeroSection = () => {
       <Slider {...sliderSettings}>
         <div>
           <img
-            src="/public/assets/carousel/Your paragraph text (2).png"
+            src="/assets/carousel/Your paragraph text (2).png"
             alt="Slide 1"
             className="w-full h-screen object-cover"
           />
         </div>
         <div>
           <img
-            src="public/assets/carousel/Your paragraph text (6).png"
+            src="/assets/carousel/Your paragraph text (6).png"
             alt="Slide 2"
             className="w-full h-screen object-cover"
           />
         </div>
         <div>
           <img
-            src="public/assets/carousel/Your paragraph text (5).png"
+            src="/assets/carousel/Your paragraph text (5).png"
             alt="Slide 3"
             className="w-full h-screen object-cover"
           />
         </div>
       </Slider>
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white bg-black bg-opacity-50">
-        <h1 className="text-5xl font-bold">Welcome to the Future of Aquaculture</h1>
-        <p className="mt-4 text-xl">
-          Empowering sustainability through IoT and Machine Learning.
-        </p>
-        <p>
-          Providing real-time water and atmospheric monitoring to prevent fish kills and ensure ecological safety.
+        <h1 className="text-6xl font-extrabold tracking-wide">
+          Revolutionizing Aquaculture With AI Powered System
+        </h1>
+        <p className="mt-4 text-2xl">
+          Real-time insights for water and atmospheric conditions.
         </p>
       </div>
     </div>

@@ -8,7 +8,8 @@ import Contact from "./pages/Contact";
 import Footer from "./components/Footer";
 import Services from "./pages/Services";
 import AppRoutes from './routes/Routes';
-
+import Header from './components/Header';
+import AlertsPage from "./pages/AlertsPage";
 
 
 import AOS from 'aos';
@@ -25,8 +26,9 @@ const App = () => {
   return (
     <div>
       {/* Navbar */}
-      <Navbar />
-      
+      <Header/>
+
+    
 
       {/* Main content */}
       <main className="flex-grow">
@@ -36,6 +38,7 @@ const App = () => {
           <Route path="/visualization" element={<Visualization />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/alerts" element={<AlertsPage />} />
         </Routes>
       </main>
 

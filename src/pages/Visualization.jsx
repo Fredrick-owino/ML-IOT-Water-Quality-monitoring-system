@@ -3,6 +3,7 @@ import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContai
 
 const Visualization = () => {
   const [data, setData] = useState([]);
+  
   const [alert, setAlert] = useState({ isActive: false, message: '' });
 
   const thresholds = {
@@ -71,10 +72,51 @@ const Visualization = () => {
         </button>
       </div>
 
-      {/* Water Parameters */}
-      <div className="mb-12 grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div className="bg-white p-6 rounded shadow-md">
-          <h3 className="text-xl font-semibold mb-4 text-gray-700">Water Parameters</h3>
+      {/* Layout: Parameter List and Graph */}
+      <div className="flex flex-col md:flex-row gap-8">
+        {/* Parameter List */}
+        <div className="bg-white p-6 rounded shadow-md w-full md:w-1/4">
+          <h3 className="text-xl font-semibold mb-4 text-gray-700">Real-Time Water Data</h3>
+          <table className="table-auto w-full text-left">
+            <thead>
+              <tr>
+                <th className="px-4 py-2">Parameter</th>
+                <th className="px-4 py-2">Value</th>
+                <th className="px-4 py-2">Time</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.length > 0 && (
+                <>
+                  <tr>
+                    <td className="px-4 py-2">Temperature (°C)</td>
+                    <td className="px-4 py-2">{data[data.length - 1].temperature}</td>
+                    <td className="px-4 py-2">{data[data.length - 1].timestamp}</td>
+                  </tr>
+                  <tr>
+                    <td className="px-4 py-2">Dissolved Oxygen (mg/L)</td>
+                    <td className="px-4 py-2">{data[data.length - 1].dissolvedOxygen}</td>
+                    <td className="px-4 py-2">{data[data.length - 1].timestamp}</td>
+                  </tr>
+                  <tr>
+                    <td className="px-4 py-2">pH Levels</td>
+                    <td className="px-4 py-2">{data[data.length - 1].pH}</td>
+                    <td className="px-4 py-2">{data[data.length - 1].timestamp}</td>
+                  </tr>
+                  <tr>
+                    <td className="px-4 py-2">Turbidity (NTU)</td>
+                    <td className="px-4 py-2">{data[data.length - 1].turbidity}</td>
+                    <td className="px-4 py-2">{data[data.length - 1].timestamp}</td>
+                  </tr>
+                </>
+              )}
+            </tbody>
+          </table>
+        </div>
+
+        {/* Graph */}
+        <div className="bg-white p-6 rounded shadow-md w-full md:w-3/4">
+          <h3 className="text-xl font-semibold mb-4 text-gray-700">Water Quality Parameters</h3>
           <div style={{ width: '100%', height: 300 }}>
             <ResponsiveContainer>
               <LineChart data={data}>
@@ -95,67 +137,19 @@ const Visualization = () => {
             </ResponsiveContainer>
           </div>
         </div>
-        <div className="bg-white p-6 rounded shadow-md">
-          <h3 className="text-xl font-semibold mb-4 text-gray-700">Real-Time Water Data</h3>
-          <table className="table-auto w-full text-left">
-            <thead>
-              <tr>
-                <th className="px-4 py-2">Parameter</th>
-                <th className="px-4 py-2">Value</th>
-              </tr>
-            </thead>
-            <tbody>
-              {data.length > 0 && (
-                <>
-                  <tr>
-                    <td className="px-4 py-2">Temperature (°C)</td>
-                    <td className="px-4 py-2">{data[data.length - 1].temperature}</td>
-                  </tr>
-                  <tr>
-                    <td className="px-4 py-2">Dissolved Oxygen (mg/L)</td>
-                    <td className="px-4 py-2">{data[data.length - 1].dissolvedOxygen}</td>
-                  </tr>
-                  <tr>
-                    <td className="px-4 py-2">pH Levels</td>
-                    <td className="px-4 py-2">{data[data.length - 1].pH}</td>
-                  </tr>
-                  <tr>
-                    <td className="px-4 py-2">Turbidity (NTU)</td>
-                    <td className="px-4 py-2">{data[data.length - 1].turbidity}</td>
-                  </tr>
-                </>
-              )}
-            </tbody>
-          </table>
-        </div>
       </div>
 
       {/* Atmospheric Parameters */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div className="bg-white p-6 rounded shadow-md">
-          <h3 className="text-xl font-semibold mb-4 text-gray-700">Atmospheric Parameters</h3>
-          <div style={{ width: '100%', height: 300 }}>
-            <ResponsiveContainer>
-              <LineChart data={data}>
-                <CartesianGrid stroke="#ccc" />
-                <XAxis dataKey="timestamp" />
-                <YAxis />
-                <Tooltip />
-                <Line type="monotone" dataKey="windSpeed" stroke="#7300ff" name="Wind Speed (m/s)" />
-                <Line type="monotone" dataKey="waterLevel" stroke="#00e5ff" name="Water Level (m)" />
-                <Line type="monotone" dataKey="humidity" stroke="#ffa500" name="Humidity (%)" />
-                <Line type="monotone" dataKey="pressure" stroke="#004d40" name="Pressure (hPa)" />
-              </LineChart>
-            </ResponsiveContainer>
-          </div>
-        </div>
-        <div className="bg-white p-6 rounded shadow-md">
+      <div className="flex flex-col md:flex-row gap-8 mt-12">
+        {/* Parameter List */}
+        <div className="bg-white p-6 rounded shadow-md w-full md:w-1/4">
           <h3 className="text-xl font-semibold mb-4 text-gray-700">Real-Time Atmospheric Data</h3>
           <table className="table-auto w-full text-left">
             <thead>
               <tr>
                 <th className="px-4 py-2">Parameter</th>
                 <th className="px-4 py-2">Value</th>
+                <th className="px-4 py-2">Time</th>
               </tr>
             </thead>
             <tbody>
@@ -164,23 +158,56 @@ const Visualization = () => {
                   <tr>
                     <td className="px-4 py-2">Wind Speed (m/s)</td>
                     <td className="px-4 py-2">{data[data.length - 1].windSpeed}</td>
+                    <td className="px-4 py-2">{data[data.length - 1].timestamp}</td>
                   </tr>
                   <tr>
                     <td className="px-4 py-2">Water Level (m)</td>
                     <td className="px-4 py-2">{data[data.length - 1].waterLevel}</td>
+                    <td className="px-4 py-2">{data[data.length - 1].timestamp}</td>
                   </tr>
                   <tr>
                     <td className="px-4 py-2">Humidity (%)</td>
                     <td className="px-4 py-2">{data[data.length - 1].humidity}</td>
+                    <td className="px-4 py-2">{data[data.length - 1].timestamp}</td>
                   </tr>
                   <tr>
                     <td className="px-4 py-2">Pressure (hPa)</td>
                     <td className="px-4 py-2">{data[data.length - 1].pressure}</td>
+                    <td className="px-4 py-2">{data[data.length - 1].timestamp}</td>
                   </tr>
                 </>
               )}
             </tbody>
           </table>
+        </div>
+
+        {/* Graph */}
+        <div className="bg-white p-6 rounded shadow-md w-full md:w-3/4">
+          <h3 className="text-xl font-semibold mb-4 text-gray-700">Atmospheric Parameters</h3>
+          <div style={{ width: '100%', height: 300 }}>
+            <ResponsiveContainer>
+              <LineChart data={data}>
+                <CartesianGrid stroke="#ccc" />
+                <XAxis dataKey="timestamp" />
+                <YAxis />
+                <Tooltip />
+                <Line
+                  type="monotone"
+                  dataKey="windSpeed"
+                  stroke="#ff7300"
+                  name="Wind Speed (m/s)"
+                />
+                <Line
+                  type="monotone"
+                  dataKey="waterLevel"
+                  stroke="#387908"
+                  name="Water Level (m)"
+                />
+                <Line type="monotone" dataKey="humidity" stroke="#0074d9" name="Humidity (%)" />
+                <Line type="monotone" dataKey="pressure" stroke="#ff0090" name="Pressure (hPa)" />
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
         </div>
       </div>
     </div>
